@@ -12,7 +12,6 @@ permissions:
   
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -47,4 +46,4 @@ jobs:
         user: DaikoGames
 
     - name: Publish to NuGet
-      run: dotnet nuget push "./publish/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_AUTH_TOKEN }} --skip-duplicate
+      run: dotnet nuget push ./publish/LibVLC.Linux.1.0.0.${{ github.run_number }}.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
