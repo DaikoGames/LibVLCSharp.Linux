@@ -1,5 +1,3 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 name: .NET
 
@@ -43,5 +41,10 @@ jobs:
         files: ./publish/*.nupkg
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: NuGet Login
+      uses: NuGet/login@v1
+      with:
+        user: DaikoGames
+
     - name: Publish to NuGet
-      run: dotnet nuget push ./publish/*.nupkg --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "./publish/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ env.NUGET_AUTH_TOKEN }} --skip-duplicate
