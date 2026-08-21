@@ -38,3 +38,5 @@ jobs:
         files: ./publish/*.nupkg
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish to NuGet
+      run: dotnet nuget push ./publish/*.nupkg --source https://api.nuget.org/v3/index.json
