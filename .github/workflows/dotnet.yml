@@ -30,7 +30,12 @@ jobs:
       
     - name: Pack Nuget Package
       run: dotnet pack -c Release -p:Version=1.0.0.${{ github.run_number }} -p:PackageLicenseExpression=LGPL-2.0-only -p:RepositoryUrl="https://github.com/DaikoGames/LibVLCSharp.Linux/" -o publish
-      
+   
+    - name: NuGet Login
+      uses: NuGet/login@v1
+      with:
+        user: DaikoGames 
+        
     - name: Publish to Github
       uses: softprops/action-gh-release@v2
       with:
