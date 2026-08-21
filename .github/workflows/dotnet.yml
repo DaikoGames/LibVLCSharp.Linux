@@ -43,7 +43,7 @@ jobs:
     - name: NuGet Login
       uses: NuGet/login@v1
       with:
-        user: DaikoGames
+        user: {{ secrets.USERNAME }}
 
     - name: Publish to NuGet
       run: dotnet nuget push ./publish/LibVLC.Linux.1.0.0.${{ github.run_number }}.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
