@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="CliWrap" Version="3.10.5" />
+    <PackageReference Include="GnomeStack.Os.Release" Version="0.1.3" />
   </ItemGroup>
 
 </Project>
