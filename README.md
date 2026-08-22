@@ -53,3 +53,13 @@ and in the .csproj just add this line:
 ```
 <PackageReference Include="LibVLC.Linux" Version="1.0.0.15"/>
 ```
+
+only remember to change this, if you have it in your project: 
+```
+ var SoundVLC = new LibVLC();
+```
+to this: 
+```
+ var SoundVLC = new LibVLCSharp.Shared.LibVLC();
+```
+
