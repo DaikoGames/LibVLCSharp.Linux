@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37411.7 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVLC.Linux", "LibVLC.Linux\LibVLC.Linux.csproj", "{0C4093A1-810C-4DCE-9948-DFC69F94B9D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVLC.Linux", "LibVLC.Linux.csproj", "{0C4093A1-810C-4DCE-9948-DFC69F94B9D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
