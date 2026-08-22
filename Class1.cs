@@ -7,7 +7,7 @@ namespace LibVLC.Linux
 {
     public class LibVLCLinux
     {
-        public async Task InstallVLC()
+        public async void InstallVLC()
         {
             try
             {
