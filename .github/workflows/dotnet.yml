@@ -2,31 +2,30 @@ name: .NET
 
 on:
   schedule:
-    - cron: '30 14 * * 6' 
+    - cron: '30 14 * * 6'
   workflow_dispatch:
 
 permissions:
   contents: write
-  id-token: write
-  
+  id-token: write        
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-    
+   
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-        
+       
     - name: Restore dependencies
       run: dotnet restore
-      
+     
     - name: Pack Nuget Package
       run: dotnet pack -c Release -p:Version=1.0.0.${{ github.run_number }} -p:PackageLicenseExpression=LGPL-2.0-only -p:RepositoryUrl="https://github.com/DaikoGames/LibVLCSharp.Linux/" -o publish
-   
+  
     - name: Publish to Github
       uses: softprops/action-gh-release@v2
       with:
@@ -34,6 +33,16 @@ jobs:
         files: ./publish/*.nupkg
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: NuGet login (OIDC → temporary API key)
+      id: login
+      uses: NuGet/login@v1
+      with:
+        user: ${{ secrets.USERNAME }}
 
     - name: Publish to NuGet
-      run: dotnet nuget push ./publish/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: |
+        dotnet nuget push ./publish/*.nupkg \
+          --api-key ${{ steps.login.outputs.NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate
