@@ -1,4 +1,5 @@
 A project that downloads you everything necessary for LibVLCSharp to work on your Linux Distro :)
+It is done with a bit of AI help as i don´t know how some things work. 
 
 Still in early WIP
 
